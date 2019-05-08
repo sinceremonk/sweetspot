@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sequences sunburst</title>
+    <script src="../d3.min.js"></script>
+    <script src="../d3-scale-chromatic.v1.min.js"></script>
+    <script src="../d3-scale-radial.js"></script>
+    <style>
+		body{
+			font-size: 14px;
+			line-height: 1.42857143;
+			}
+		</style>
+  </head>
+  <body>
+	  <!------------------------------navbar -start---------------------------------------------->
+
+      <div id="chartDiv">
+		<svg> </svg>
+      </div>
+    <script type="text/javascript">
+		  var data=[{"processId":610428,"processName":"testTest","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":610878,"processName":"[W] Heat Transmission","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":39786,"processName":"disposal, glass, 0% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":40792,"processName":"alu tubes production 3 dl demo7","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":40802,"processName":"disposal, aluminium, 0% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":41808,"processName":"[E] electricity, low voltage, production UCTE, at grid","metadata":"Material production","amount":0.0,"unit":""},{"processId":42814,"processName":"[E] copper, at regional storage","metadata":"No Metadata","amount":66.4176925858959,"unit":""},{"processId":43820,"processName":"production of carton board boxes, offset printing, at plant","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":44826,"processName":"recycling PP","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":45833,"processName":"recycling aluminium","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":46840,"processName":"recycling glass","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":47847,"processName":"recycling PS","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":48854,"processName":"recycling steel and iron","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":49861,"processName":"[E] steel, low-alloyed, at plant","metadata":"No Metadata","amount":26.8963975251688,"unit":""},{"processId":50867,"processName":"disposal, aluminium, 0% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":51873,"processName":"disposal, paper, 11.2% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":52879,"processName":"corrugated board, mixed fibre, single wall, at plant","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":53885,"processName":"[E] glass, virgin","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":54891,"processName":"paper, wood-containing, LWC, at regional storage","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":55897,"processName":"transport, van \u003c3.5t","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":56903,"processName":"[E] polyvinylchloride, at regional storage","metadata":"No Metadata","amount":95.3955294753943,"unit":""},{"processId":57909,"processName":"disposal, packaging cardboard, 19.6% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":58915,"processName":"disposal, steel, 0% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":59921,"processName":"disposal, polypropylene, 15.9% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":60927,"processName":"disposal, polyvinylchloride, 0.2% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":61933,"processName":"disposal, paper, 11.2% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":62939,"processName":"recycling paper","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":63946,"processName":"disposal, wood untreated, 20% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":64952,"processName":"alkyd varnish ETH S demo7","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":64957,"processName":"disposal, polypropylene, 15.9% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":65963,"processName":"disposal, municipal solid waste, 22.9% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":66969,"processName":"[E] polypropylene, granulate, at plant","metadata":"No Metadata","amount":568.8738414680442,"unit":""},{"processId":67975,"processName":"[E] aluminium, production mix, at plant","metadata":"No Metadata","amount":687.9920848847661,"unit":""},{"processId":68981,"processName":"disposal, polyvinylchloride, 0.2% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":69987,"processName":"disposal, copper, 0% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":70993,"processName":"disposal, glass, 0% water, to inert material landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":71999,"processName":"disposal, wood untreated, 20% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":73005,"processName":"[M] injection moulding","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":74011,"processName":"disposal, steel, 0% water, to inert material landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":75017,"processName":"disposal, packaging cardboard, 19.6% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":76023,"processName":"[E] heat, natural gas, at industrial furnace \u003e100kW","metadata":"No Metadata","amount":771.18745442134,"unit":""},{"processId":77029,"processName":"recycling cardboard","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":78036,"processName":"transport, lorry 28t","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":79042,"processName":"[W] Heat, natural gas","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79045,"processName":"[E] Aluminium Production","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79048,"processName":"[M]Aluminium Tubes","metadata":"REUSE","amount":385.59372721067,"unit":""},{"processId":79052,"processName":"[E] Steel, low-alloyed","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79055,"processName":"[M] Polypropylene","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79058,"processName":"[M] Copper","metadata":"REUSE","amount":0.0,"unit":""},{"processId":79061,"processName":"[M] Polyvinylchloride","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79064,"processName":"[A] Housing Pro","metadata":"RECYCLE","amount":1073.585812095436,"unit":""},{"processId":79069,"processName":"[A] Small Parts","metadata":"Material production","amount":439.9376940275332,"unit":""},{"processId":79076,"processName":"[A] Thermos Jug","metadata":"REUSE","amount":670.0306479446921,"unit":""},{"processId":79081,"processName":"[A] Mains","metadata":"ENERGY","amount":33.20884629294795,"unit":""},{"processId":79086,"processName":"[A] Assembly Model Pro","metadata":"ASSEMBLY","amount":2216.76300036061,"unit":""}];
+  var metadataArray=new Array();
+						var normalizedArray=new Array();
+data.forEach(function(d,i){
+	if(metadataArray.indexOf(d.metadata)==-1) metadataArray.push(d.metadata)
+	})
+
+for(i=0;i<data.length;i++)
+{
+	normalizedArray.push(data[i]);
+	metadataArray.forEach(function(d,j)
+	{
+		if(data[i].metadata.valueOf()!=d.valueOf())
+		{
+			normalizedArray.push({"processId":data[i].processId,"amount":0,"processName":data[i].processName,"unit":"","metadata":d});
+			
+			}
+		
+		
+		})
+}
+//~ console.log(normalizedArray);
+					newdata=d3.nest()
+					.key(function(d){return d.metadata;})
+					//~ .sortValues(function(a,b) { return a.amount-b.amount; } )
+					.entries(data);
+					
+	var keys=new Array();
+	data.forEach(function(d,i){
+		keys.push(d.processName);
+		
+		});
+  //~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	console.log(newdata)
+var width = 700;  // <-- 1
+var height = 900;
+var margin = {'top': 20, 'right': 20, 'bottom': 20, 'left': 20};
+var color = d3.scaleOrdinal(d3.schemeCategory20b);   // <-- 3
+// Where the maximum value gives us the maximum radius:
+//defining scale
+var maxValue=d3.max(data,function(d){
+		return d.amount;
+		});
+				var maxRadius = Math.sqrt(maxValue*20 / Math.PI);
+
+
+
+// Determine the chart center:
+		centerX = (width - margin.left - margin.right) / 2;
+		centerY = (height - margin.top - margin.bottom) / 2;
+		
+		var numWedges=metadataArray.length;
+		
+var radiusScale = d3.scaleLinear().domain( [0, maxRadius] ).range( [0, 600] );
+  
+var angleScale = d3.scaleLinear().domain( [0, numWedges] ).range( [Math.PI, 3*Math.PI ] )
+	// Update the radius scale:
+		
+		// Update the angle scale:
+		
+	
+
+	
+	
+	var graph = d3.select('svg')  // <-- 1
+    .attr('width', width)  // <-- 2
+    .attr('height', height)
+    .append('g')  // <-- 3
+    .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');  // <-- 4
+    
+	var previousAngle=0;
+	var arc = d3.arc()
+		.innerRadius( 0 )
+		.outerRadius( function(d,i) {
+			return radiusScale(Math.sqrt((d.radius*numWedges)/Math.PI));
+			//~ return radiusScale( d.radius ); 
+			}
+			
+			 )
+		.startAngle( function(d,i) { 
+			//~ return angleScale( d.angle)+previousAngle;
+			return angleScale(d.angle);
+			 } )
+		.endAngle( function(d,i) { 
+			return angleScale( d.angle ) + (Math.PI / (numWedges/2));
+			//~ previousAngle=angleScale( d.angle ) + angleScale(360 / (numWedges));
+			//~ return previousAngle;
+			 } );
+	
+	
+	
+			wedgeGroups = graph.selectAll('.wedgeGroup')
+			.data( newdata )
+		  .enter().append('svg:g')
+		  	.attr('class', function(d){
+				return d.metadata;
+				})
+		  	.attr('transform', 'scale(0,0)');	
+		
+		
+		var previousAmount=0;
+		var currAmount=0;
+		// Create the wedges:
+		wedges = wedgeGroups.selectAll('.wedge')
+		  	.data( function(d,i) { 
+				d.values.forEach(function(d,index){
+					d.angle=i;
+				if(index==0){previousAmount=0;currAmount=0};
+				currAmount=d.amount+currAmount;
+				//~ console.log('Adding '+d.amount+' and '+previousAmount+'for '+d.processName+' = '+currAmount);
+				if(d.amount!=0)
+				{
+					previousAmount=d.amount;
+					d.radius=currAmount; // set base of rectangle
+				}	
+				else d.radius=0;
+					
+					});
+					
+					
+					
+				return d.values.sort(function(a,b) { return b.amount-a.amount; } );			
+		  	})
+		  .enter().append('svg:path')
+		  	.attr('class', function(d) { return 'wedge ' + d.processName; })
+		  	.attr('d', arc )
+		  	  .attr("fill-rule", "evenodd")
+		  	  .style("opacity", 1)
+      .attr('stroke', '#fff')
+	  .attr('stroke-width', '1') 
+		 .style("fill", function(d,i) {return d3.interpolateYlOrRd(.20+(d.amount/maxValue));  })
+		  	
+		  	wedges.append('svg:title')
+			.text( function(d) { return d.processName + " : "+d.amount});
+
+
+					// Transition the wedges to view:
+		wedgeGroups.transition()
+			.delay( 1000 )
+			.duration( function(d,i) { 
+				return 800*(i+1);
+			})
+			.attr('transform', 'scale(1,1)');
+	
+	
+	//--------------------------------------------------------------------------------------------------
+	// Append labels to the wedgeGroups:
+		//~ var numLabels = d3.selectAll('.label-path')[0].length;
+		
+		wedgeGroups.selectAll('.label-path')
+			.data( function(d,i) { 
+				return [
+					{
+						'index': i,
+						'angle': i,
+						'radius': d3.max( d.values,function(d,i){return d.radius+200;} )
+					}
+				];
+			} )
+		  .enter().append('svg:path')
+		  	.attr('class', 'label-path')
+		  	.attr('id', function(d) {
+		  		return 'label-path' + (d.index);
+		  	})
+			.attr('d', arc)
+		  	.attr('fill', 'none')
+		  	.attr('stroke', 'none');
+
+		wedgeGroups.selectAll('.label')
+			.data( function(d,i) { 
+				console.log(d);
+				return [
+					{
+						'index': i,
+						'label': d.key
+					}
+				];
+			} )
+		  .enter().append('svg:text')
+	   		.attr('class', 'label')
+	   		.attr('text-anchor', 'start')
+	   		.attr('x', 5)
+	   		.attr('dy', '-.71em')
+	   		.attr('text-align', 'center')
+	  		.append('textPath')
+	  			.attr('xlink:href', function(d,i) { 
+	  				return '#label-path' + (d.index );
+	  			})
+	  			.text( function(d) { return d.label; } );
+
+	
+		</script>
+     
+  </body>
+</html>

@@ -1,0 +1,38 @@
+th {
+  border: 1px solid #ddd;
+  padding: 4px;
+  background-color: #167F92;
+  color: #FFF;
+  font: 12px sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+td {
+  padding: 2px;
+  font: 11px sans-serif;
+  border: 1px solid #ddd;
+}
+tr:nth-child(even) {
+  background-color: #EAF3F3;
+}
+#chart {
+  padding: 0px;
+}
+.xaxislabel {
+  font-size: 9px;
+}
+.toolTip {
+font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+position: absolute;
+display: none;
+width: auto;
+height: auto;
+background: none repeat scroll 0 0 white;
+border: 0 none;
+border-radius: 8px 8px 8px 8px;
+box-shadow: -3px 3px 15px #888888;
+color: black;
+font: 12px sans-serif;
+padding: 5px;
+text-align: center;
+}

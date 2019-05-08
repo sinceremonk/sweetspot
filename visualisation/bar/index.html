@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Stacked </title>
+	<!-- You will load the D3 library here. -->
+	<script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+</head>
+<body>
+	<!-- Page elements and content go here. -->
+<style type="text/css">
+			.axis {
+				font: 10px sans-serif;
+			}
+
+			.axis path,
+			.axis line {
+				fill: none;
+				stroke: #000;
+				shape-rendering: crispEdges;
+			}	
+			
+			.toolTip {
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		position: absolute;
+		display: none;
+		width: auto;
+		height: auto;
+		background: none repeat scroll 0 0 white;
+		border: 0 none;
+		border-radius: 8px 8px 8px 8px;
+		box-shadow: -3px 3px 15px #888888;
+		color: black;
+		font: 12px sans-serif;
+		padding: 5px;
+		text-align: center;
+		}
+		</style>
+<div id="chartDiv"><svg></svg></div>
+<script type="text/javascript">
+	
+	String.prototype.truncString = function(max, add){
+		   add = add || '...';
+		   return (this.length > max ? this.substring(0,max)+add : this);
+		};
+// Our D3 code will go here
+//~ var ratData = [];
+
+//~ d3.csv("rat-data.csv", function(d) {
+	//~ return {
+		//~ city: d.city,
+		//~ rats: +d.rats,
+		//~ squirrels: +d.squirrels,
+		//~ cats : +d.cats
+	//~ };
+//~ }, function(error, rows) {
+	//~ data = rows;
+	//~ console.log(data);
+	//~ createVisualization();
+//~ });
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var abc;
+  //~ var data=[{"processId":610428,"processName":"testTest","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":610878,"processName":"[W] Heat Transmission","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":39786,"processName":"disposal, glass, 0% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":40792,"processName":"alu tubes production 3 dl demo7","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":40802,"processName":"disposal, aluminium, 0% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":41808,"processName":"[E] electricity, low voltage, production UCTE, at grid","metadata":"Material production","amount":0.0,"unit":""},{"processId":42814,"processName":"[E] copper, at regional storage","metadata":"No Metadata","amount":66.4176925858959,"unit":""},{"processId":43820,"processName":"production of carton board boxes, offset printing, at plant","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":44826,"processName":"recycling PP","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":45833,"processName":"recycling aluminium","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":46840,"processName":"recycling glass","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":47847,"processName":"recycling PS","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":48854,"processName":"recycling steel and iron","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":49861,"processName":"[E] steel, low-alloyed, at plant","metadata":"No Metadata","amount":26.8963975251688,"unit":""},{"processId":50867,"processName":"disposal, aluminium, 0% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":51873,"processName":"disposal, paper, 11.2% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":52879,"processName":"corrugated board, mixed fibre, single wall, at plant","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":53885,"processName":"[E] glass, virgin","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":54891,"processName":"paper, wood-containing, LWC, at regional storage","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":55897,"processName":"transport, van \u003c3.5t","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":56903,"processName":"[E] polyvinylchloride, at regional storage","metadata":"No Metadata","amount":95.3955294753943,"unit":""},{"processId":57909,"processName":"disposal, packaging cardboard, 19.6% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":58915,"processName":"disposal, steel, 0% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":59921,"processName":"disposal, polypropylene, 15.9% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":60927,"processName":"disposal, polyvinylchloride, 0.2% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":61933,"processName":"disposal, paper, 11.2% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":62939,"processName":"recycling paper","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":63946,"processName":"disposal, wood untreated, 20% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":64952,"processName":"alkyd varnish ETH S demo7","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":64957,"processName":"disposal, polypropylene, 15.9% water, to municipal incineration","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":65963,"processName":"disposal, municipal solid waste, 22.9% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":66969,"processName":"[E] polypropylene, granulate, at plant","metadata":"No Metadata","amount":568.8738414680442,"unit":""},{"processId":67975,"processName":"[E] aluminium, production mix, at plant","metadata":"No Metadata","amount":687.9920848847661,"unit":""},{"processId":68981,"processName":"disposal, polyvinylchloride, 0.2% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":69987,"processName":"disposal, copper, 0% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":70993,"processName":"disposal, glass, 0% water, to inert material landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":71999,"processName":"disposal, wood untreated, 20% water, to sanitary landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":73005,"processName":"[M] injection moulding","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":74011,"processName":"disposal, steel, 0% water, to inert material landfill","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":75017,"processName":"disposal, packaging cardboard, 19.6% water, to municipal incineration","metadata":"Manufacturing","amount":0.0,"unit":""},{"processId":76023,"processName":"[E] heat, natural gas, at industrial furnace \u003e100kW","metadata":"No Metadata","amount":771.18745442134,"unit":""},{"processId":77029,"processName":"recycling cardboard","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":78036,"processName":"transport, lorry 28t","metadata":"No Metadata","amount":0.0,"unit":""},{"processId":79042,"processName":"[W] Heat, natural gas","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79045,"processName":"[E] Aluminium Production","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79048,"processName":"[M]Aluminium Tubes","metadata":"REUSE","amount":385.59372721067,"unit":""},{"processId":79052,"processName":"[E] Steel, low-alloyed","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79055,"processName":"[M] Polypropylene","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79058,"processName":"[M] Copper","metadata":"REUSE","amount":0.0,"unit":""},{"processId":79061,"processName":"[M] Polyvinylchloride","metadata":"ENERGY","amount":0.0,"unit":""},{"processId":79064,"processName":"[A] Housing Pro","metadata":"RECYCLE","amount":1073.585812095436,"unit":""},{"processId":79069,"processName":"[A] Small Parts","metadata":"Material production","amount":439.9376940275332,"unit":""},{"processId":79076,"processName":"[A] Thermos Jug","metadata":"REUSE","amount":670.0306479446921,"unit":""},{"processId":79081,"processName":"[A] Mains","metadata":"ENERGY","amount":33.20884629294795,"unit":""},{"processId":79086,"processName":"[A] Assembly Model Pro","metadata":"ASSEMBLY","amount":2216.76300036061,"unit":""}];
+  //~ var data=[{"processId":610428,"processName":"testTest","metadata":"Transport","amount":221,"unit":""},{"processId":610878,"processName":"[W] Heat Transmission","metadata":"Manufacturing","amount":0,"unit":""},{"processId":39786,"processName":"disposal, glass, 0% water, to municipal incineration","metadata":"Transport","amount":323,"unit":""},{"processId":40792,"processName":"alu tubes production 3 dl demo7","metadata":"Transport","amount":434,"unit":""},{"processId":40802,"processName":"disposal, aluminium, 0% water, to sanitary landfill","metadata":"Transport","amount":343,"unit":""},{"processId":41808,"processName":"[E] electricity, low voltage, production UCTE, at grid","metadata":"Material production","amount":0,"unit":""},{"processId":43820,"processName":"production of carton board boxes, offset printing, at plant","metadata":"ENERGY","amount":0,"unit":""},{"processId":44826,"processName":"recycling PP","metadata":"Transport","amount":0,"unit":""},{"processId":45833,"processName":"recycling aluminium","metadata":"No Metadata","amount":0,"unit":""},{"processId":46840,"processName":"recycling glass","metadata":"No Metadata","amount":0,"unit":""},{"processId":47847,"processName":"recycling PS","metadata":"No Metadata","amount":0,"unit":""},{"processId":48854,"processName":"recycling steel and iron","metadata":"No Metadata","amount":0,"unit":""},{"processId":49861,"processName":"[E] steel, low-alloyed, at plant","metadata":"No Metadata","amount":26.8963975251688,"unit":""},{"processId":50867,"processName":"disposal, aluminium, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":51873,"processName":"disposal, paper, 11.2% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":52879,"processName":"corrugated board, mixed fibre, single wall, at plant","metadata":"No Metadata","amount":0,"unit":""},{"processId":53885,"processName":"[E] glass, virgin","metadata":"No Metadata","amount":0,"unit":""},{"processId":54891,"processName":"paper, wood-containing, LWC, at regional storage","metadata":"No Metadata","amount":0,"unit":""},{"processId":55897,"processName":"transport, van <3.5t","metadata":"No Metadata","amount":0,"unit":""},{"processId":56903,"processName":"[E] polyvinylchloride, at regional storage","metadata":"No Metadata","amount":95.3955294753943,"unit":""},{"processId":57909,"processName":"disposal, packaging cardboard, 19.6% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":58915,"processName":"disposal, steel, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":59921,"processName":"disposal, polypropylene, 15.9% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":60927,"processName":"disposal, polyvinylchloride, 0.2% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":61933,"processName":"disposal, paper, 11.2% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":62939,"processName":"recycling paper","metadata":"No Metadata","amount":0,"unit":""},{"processId":63946,"processName":"disposal, wood untreated, 20% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":64952,"processName":"alkyd varnish ETH S demo7","metadata":"No Metadata","amount":0,"unit":""},{"processId":64957,"processName":"disposal, polypropylene, 15.9% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":65963,"processName":"disposal, municipal solid waste, 22.9% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":66969,"processName":"[E] polypropylene, granulate, at plant","metadata":"No Metadata","amount":568.8738414680442,"unit":""},{"processId":67975,"processName":"[E] aluminium, production mix, at plant","metadata":"No Metadata","amount":687.9920848847661,"unit":""},{"processId":68981,"processName":"disposal, polyvinylchloride, 0.2% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":69987,"processName":"disposal, copper, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":70993,"processName":"disposal, glass, 0% water, to inert material landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":71999,"processName":"disposal, wood untreated, 20% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":73005,"processName":"[M] injection moulding","metadata":"Manufacturing","amount":0,"unit":""},{"processId":74011,"processName":"disposal, steel, 0% water, to inert material landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":75017,"processName":"disposal, packaging cardboard, 19.6% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":76023,"processName":"[E] heat, natural gas, at industrial furnace >100kW","metadata":"No Metadata","amount":771.18745442134,"unit":""},{"processId":77029,"processName":"recycling cardboard","metadata":"No Metadata","amount":0,"unit":""},{"processId":78036,"processName":"transport, lorry 28t","metadata":"Transport","amount":0,"unit":""},{"processId":79042,"processName":"[W] Heat, natural gas","metadata":"ENERGY","amount":0,"unit":""},{"processId":79045,"processName":"[E] Aluminium Production","metadata":"ENERGY","amount":0,"unit":""},{"processId":79048,"processName":"[M]Aluminium Tubes","metadata":"REUSE","amount":385.59372721067,"unit":""},{"processId":79052,"processName":"[E] Steel, low-alloyed","metadata":"ENERGY","amount":0,"unit":""},{"processId":79055,"processName":"[M] Polypropylene","metadata":"ENERGY","amount":0,"unit":""},{"processId":79058,"processName":"[M] Copper","metadata":"REUSE","amount":0,"unit":""},{"processId":79061,"processName":"[M] Polyvinylchloride","metadata":"ENERGY","amount":0,"unit":""},{"processId":79064,"processName":"[A] Housing Pro","metadata":"RECYCLE","amount":1073.585812095436,"unit":""},{"processId":79069,"processName":"[A] Small Parts","metadata":"Material production","amount":439.9376940275332,"unit":""},{"processId":79076,"processName":"[A] Thermos Jug","metadata":"REUSE","amount":670.0306479446921,"unit":""},{"processId":79081,"processName":"[A] Mains","metadata":"ENERGY","amount":33.20884629294795,"unit":""},{"processId":79086,"processName":"[A] Assembly Model Pro","metadata":"ASSEMBLY","amount":2216.76300036061,"unit":""}];
+  		  var data=[{"processId":610428,"processName":"testTest","metadata":"Transport","amount":221,"unit":""},{"processId":610878,"processName":"[W] Heat Transmission","metadata":"Manufacturing","amount":0,"unit":""},{"processId":39786,"processName":"disposal, glass, 0% water, to municipal incineration","metadata":"Transport","amount":323,"unit":""},{"processId":40792,"processName":"alu tubes production 3 dl demo7","metadata":"Transport","amount":434,"unit":""},{"processId":40802,"processName":"disposal, aluminium, 0% water, to sanitary landfill","metadata":"Transport","amount":343,"unit":""},{"processId":41808,"processName":"[E] electricity, low voltage, production UCTE, at grid","metadata":"Material production","amount":0,"unit":""},{"processId":43820,"processName":"production of carton board boxes, offset printing, at plant","metadata":"ENERGY","amount":0,"unit":""},{"processId":44826,"processName":"recycling PP","metadata":"Transport","amount":0,"unit":""},{"processId":45833,"processName":"recycling aluminium","metadata":"No Metadata","amount":0,"unit":""},{"processId":46840,"processName":"recycling glass","metadata":"No Metadata","amount":0,"unit":""},{"processId":47847,"processName":"recycling PS","metadata":"No Metadata","amount":0,"unit":""},{"processId":48854,"processName":"recycling steel and iron","metadata":"No Metadata","amount":0,"unit":""},{"processId":49861,"processName":"[E] steel, low-alloyed, at plant","metadata":"No Metadata","amount":26.8963975251688,"unit":""},{"processId":50867,"processName":"disposal, aluminium, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":51873,"processName":"disposal, paper, 11.2% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":52879,"processName":"corrugated board, mixed fibre, single wall, at plant","metadata":"No Metadata","amount":0,"unit":""},{"processId":53885,"processName":"[E] glass, virgin","metadata":"No Metadata","amount":0,"unit":""},{"processId":54891,"processName":"paper, wood-containing, LWC, at regional storage","metadata":"No Metadata","amount":0,"unit":""},{"processId":55897,"processName":"transport, van <3.5t","metadata":"No Metadata","amount":0,"unit":""},{"processId":56903,"processName":"[E] polyvinylchloride, at regional storage","metadata":"No Metadata","amount":95.3955294753943,"unit":""},{"processId":57909,"processName":"disposal, packaging cardboard, 19.6% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":58915,"processName":"disposal, steel, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":59921,"processName":"disposal, polypropylene, 15.9% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":60927,"processName":"disposal, polyvinylchloride, 0.2% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":61933,"processName":"disposal, paper, 11.2% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":62939,"processName":"recycling paper","metadata":"No Metadata","amount":0,"unit":""},{"processId":63946,"processName":"disposal, wood untreated, 20% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":64952,"processName":"alkyd varnish ETH S demo7","metadata":"No Metadata","amount":0,"unit":""},{"processId":64957,"processName":"disposal, polypropylene, 15.9% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":65963,"processName":"disposal, municipal solid waste, 22.9% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":66969,"processName":"[E] polypropylene, granulate, at plant","metadata":"No Metadata","amount":568.8738414680442,"unit":""},{"processId":67975,"processName":"[E] aluminium, production mix, at plant","metadata":"No Metadata","amount":687.9920848847661,"unit":""},{"processId":68981,"processName":"disposal, polyvinylchloride, 0.2% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":69987,"processName":"disposal, copper, 0% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":70993,"processName":"disposal, glass, 0% water, to inert material landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":71999,"processName":"disposal, wood untreated, 20% water, to sanitary landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":73005,"processName":"[M] injection moulding","metadata":"Manufacturing","amount":0,"unit":""},{"processId":74011,"processName":"disposal, steel, 0% water, to inert material landfill","metadata":"No Metadata","amount":0,"unit":""},{"processId":75017,"processName":"disposal, packaging cardboard, 19.6% water, to municipal incineration","metadata":"No Metadata","amount":0,"unit":""},{"processId":76023,"processName":"[E] heat, natural gas, at industrial furnace >100kW","metadata":"No Metadata","amount":771.18745442134,"unit":""},{"processId":77029,"processName":"recycling cardboard","metadata":"No Metadata","amount":0,"unit":""},{"processId":78036,"processName":"transport, lorry 28t","metadata":"Transport","amount":0,"unit":""},{"processId":79042,"processName":"[W] Heat, natural gas","metadata":"ENERGY","amount":0,"unit":""},{"processId":79045,"processName":"[E] Aluminium Production","metadata":"ENERGY","amount":0,"unit":""},{"processId":79048,"processName":"[M]Aluminium Tubes","metadata":"REUSE","amount":385.59372721067,"unit":""},{"processId":79052,"processName":"[E] Steel, low-alloyed","metadata":"ENERGY","amount":0,"unit":""},{"processId":79055,"processName":"[M] Polypropylene","metadata":"ENERGY","amount":0,"unit":""},{"processId":79058,"processName":"[M] Copper","metadata":"REUSE","amount":0,"unit":""},{"processId":79061,"processName":"[M] Polyvinylchloride","metadata":"ENERGY","amount":0,"unit":""},{"processId":79064,"processName":"[A] Housing Pro","metadata":"RECYCLE","amount":1073.585812095436,"unit":""},{"processId":79069,"processName":"[A] Small Parts","metadata":"Material production","amount":439.9376940275332,"unit":""},{"processId":79076,"processName":"[A] Thermos Jug","metadata":"REUSE","amount":670.0306479446921,"unit":""},{"processId":79081,"processName":"[A] Mains","metadata":"ENERGY","amount":33.20884629294795,"unit":""},{"processId":79086,"processName":"[A] Assembly Model Pro","metadata":"ASSEMBLY","amount":2216.76300036061,"unit":""}];
+  var metadataArray=new Array();
+						var normalizedArray=new Array();
+data.forEach(function(d,i){
+	if(metadataArray.indexOf(d.metadata)==-1) metadataArray.push(d.metadata)
+	})
+
+for(i=0;i<data.length;i++)
+{
+	normalizedArray.push(data[i]);
+	metadataArray.forEach(function(d,j)
+	{
+		if(data[i].metadata.valueOf()!=d.valueOf())
+		{
+			normalizedArray.push({"processId":data[i].processId,"amount":0,"processName":data[i].processName,"unit":"","metadata":d});
+			
+			}
+		
+		
+		})
+}
+//~ console.log(normalizedArray);
+newdata=d3.nest()
+					.key(function(d){return d.metadata;})
+					.entries(normalizedArray);
+	var keys=new Array();
+	data.forEach(function(d,i){
+		keys.push(d.processName);
+		
+		});
+  //~ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  var margin = {bottom: 75, left: 15, right: 85};
+	var w = 1500 - margin.left - margin.right;
+	var h = 768 - margin.bottom;
+	
+	// get length of Array
+	var arrayLength = newdata.length; // length of dataset
+	var x_axisLength = 100; // length of x-axis in our layout
+	var y_axisLength = 100; // length of y-axis in our layout
+	
+	
+	//~ var x_scale = d3.scaleBand().domain(newdata[0].values.map(function(d) { return d.metadata; }))
+	var x_scale = d3.scaleBand().domain(newdata.map(function(d) {
+		
+		//~ console.log(d.key); 
+		
+		return d.key; }))
+    .range([0, w]);
+    
+    var xAxis = d3.axisBottom(x_scale)
+    //~ .scale(x_scale)
+    .tickFormat(function(d){return d});
+
+var svg = d3.select("body")
+		.select("svg")
+		.attr("width", w + margin.left + margin.right+1000)
+		.attr("height", h + margin.bottom+1000)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + ",10)");
+		
+		  var div_tooltip =  d3.select("#chartDiv").append("div").attr("class", "toolTip");
+		//~ var tooltip = svg.append("g")
+		//~ .attr("class", "tooltip")
+		//~ .style("display", "none")
+			//~ .attr("z-index", "50");
+	    
+	//~ tooltip.append("text")
+		//~ .attr("x", 15)
+		//~ .attr("dy", "1.2em")
+		//~ .style("text-anchor", "middle")
+		//~ .attr("font-size", "12px")
+	
+
+
+var stack = d3.stack()
+    	.keys(["amount"])
+    	.order(d3.stackOrderDescending)
+    	.offset(d3.stackOffsetNone);
+    	
+    	
+    	//~ console.log(stack(newdata[0].values));
+    	var maxValue=d3.max(data, function(d) {
+		//~ console.log(d);
+		return d.amount;
+		})
+    	// setup the Y scale
+	var yScale = d3.scaleLinear()
+		.domain([0,maxValue])
+		.range([0,h-margin.bottom]);
+		
+	var percentageScale = d3.scaleLinear();
+		
+		
+		    
+var yAxis=d3.axisLeft(yScale)
+			.tickFormat(function(d){return (Math.ceil(maxValue/100)*100-d-100).toFixed(0)});
+//~ var colors = ["#669900","#669933","#669966","#669999","#6699cc","#6699ff","#66cc00","#66cc33","#66cc66","#66cc99","#66cccc","#66ccff","#66ff00","#66ff33","#66ff66","#66ff99","#66ffcc","#66ffff","#990000","#990033","#990066","#990099","#9900cc","#9900ff","#993300","#993333","#993366","#993399","#9933cc","#9933ff","#996600","#996633","#996666","#996699","#9966cc","#9966ff","#999900","#999933","#999966","#999999","#9999cc","#9999ff","#99cc00","#99cc33","#99cc66","#99cc99","#99cccc","#99ccff","#99ff00","#99ff33","#99ff66","#99ff99","#99ffcc","#99ffff","#cc0033"]; // choose colors
+var colors1 = d3.scaleOrdinal(d3.schemeCategory20);
+//var colors1 = d3.scaleOrdinal(d3.schemeCategory20b);
+
+var 	groups = svg.selectAll("g.metadata")
+		.data(newdata)
+		.enter().append("g")
+		.attr("class", "metadata")
+		//~ .style("fill", function(d, i) {
+			//~ console.log(d);
+			//~ return colors(i); // color the rectangles
+		//~ });
+		var previousAmount=0;
+		var currAmount=0;
+		var count=0;
+		var currentMax=new Array();
+		
+		var rect=groups.selectAll("rect")
+						.data(function(d){
+							currentMax.push(d3.max(d.values,function(d,i){return d.amount;}));
+							return d.values;})
+						.enter().append("rect")
+						.attr("x",  function(d) {
+
+							//~ console.log(x_scale(d.metadata)); 
+							return x_scale(d.metadata)+margin.left+42; })
+						.attr("y", function(d,i) {
+							if(i==0){previousAmount=0;};
+								if(d.amount>0)
+								{
+									currAmount=d.amount+previousAmount;
+									previousAmount+=d.amount;
+									return h-yScale(currAmount); // set base of rectangle
+									
+								}
+								
+							})
+						.attr("height", function(d) {
+							return yScale(d.amount);
+					})
+					.attr("width",function(d){ 
+						if(d.amount!=0)
+						return (x_scale.bandwidth()/arrayLength)+55
+						else return 0;
+						}) // set width of rectangle
+					.style("fill", function(d, i) {
+					if(i==0)
+					{ color=colors1(count);
+					percentageScale.domain([0,currentMax[count]])
+									.range(["#ffffff",color])
+					//~ return color.brighter()
+					count++;
+				}
+			return percentageScale(d.amount+50);
+			
+						}).on("mouseover", function() {
+					div_tooltip.style("display", "none"); // hide tooltip
+				})
+				.on("mousemove", function(d) {
+					var xPosition = d3.mouse(this)[0] +margin.left+50;
+					var yPosition = d3.mouse(this)[1] - 25;
+					//~ tooltip.attr("transform", "translate(" + xPosition + "," + yPosition + ")");
+					//~ tooltip.select("text").text(d.processName + ": " + d.amount); // populate tooltip
+					
+					
+					div_tooltip.style("left", xPosition+"px");
+					div_tooltip.style("top",yPosition+"px");
+					div_tooltip.style("display", "inline-block");
+					div_tooltip.html(d.processName + "<br/>" + d.amount.toFixed(5));	
+				})
+				.on("mouseout", function() {
+					div_tooltip.style("display", "none");
+				});	
+				
+				
+						
+				//~ groups.append("text")
+           //~ .text(function(d,i) {                 
+			   //~ return d.key;
+           //~ })
+           //~ .attr("id", function(d,i){return (d.key+i)})
+           //~ .attr("text-anchor", "middle")
+           //~ .attr("x", function(d, i) {
+              	//~ return x_scale(d.key)+margin.left+42; })
+           //~ .attr("y", function(d) {
+			  //~ sum= d3.sum(d.values,function(d,i){return  d.amount}) 
+          //~ return h-yScale(sum);
+           //~ })
+           //~ .attr("font-family", "sans-serif")
+           //~ .attr("font-size", "11px")
+           //~ .attr("fill", "black");		
+           
+				groups.append("svg:image")
+          .attr("xlink:href",  function(d) { return d.key+".png";})
+           .attr("id", function(d,i){return ("img-"+d.key)})
+           .attr("x", function(d, i) {
+              	return x_scale(d.key)+margin.left+52; })
+           .attr("y", function(d) {
+			  sum= d3.sum(d.values,function(d,i){return  d.amount}) 
+          return h-yScale(sum)-50;
+           })
+           .attr("font-family", "sans-serif")
+           .attr("font-size", "11px")
+           .attr("fill", "black")	
+			.attr("height", 50)
+			.attr("width", 50);
+				
+				
+				
+		groups
+		.filter(function(d, i) { return !i; })
+	   .append("g")
+      .attr("class", "x axis")
+      .attr("transform",function(d){
+		  //~ console.log(d); 
+		  return "translate("+x_scale(d.key)+","+h+")"})
+      .call(xAxis);
+      
+			groups
+			.filter(function(d, i) { return !i; })
+			.append("g")
+			 .attr("class", "y axis")
+			.attr("transform",function(d,i){
+		  console.log(i); 
+		  return "translate(15,80)"})
+		  .call(yAxis);
+		  
+		  
+		  
+		// Draw legend
+//	var legend = svg.selectAll(".legend")
+//		.data(data)
+//		.enter().append("g")
+//		.attr("class", "legend")
+//		.attr("transform", function(d, i) { return "translate(" + i * 100 +", 750)"; });
+//var yInc=0;
+//	legend.append("rect")
+//		.attr("x", 0)
+//		.attr("y", function(d,i){
+//			console.log("1"+yInc);
+//			if(i%10==0) 
+//			yInc=yInc+10;
+//			else
+//			return yInc;})
+//		.attr("width", 18)
+//		.attr("height", 18)
+//		.style("fill", function(d, i) {return colors(i)});
+//
+//	legend.append("text")
+//		.attr("x", 20)
+//		.attr("y", yInc)
+//		.attr("dy", ".35em")
+//		.style("text-anchor", "start")
+//		.text(function(d, i) { 
+//			return d.processName.truncString(10,'..');
+//		//~ switch (i) {
+//			//~ case 0: return "Rats";
+//			//~ case 1: return "Squirrels";
+//			//~ case 1: return "Cats";
+//		//~ }
+//	});
+
+//~ function createVisualization() {
+
+
+	//~ // Draw legend
+	//~ var legend = svg.selectAll(".legend")
+		//~ .data(colors)
+		//~ .enter().append("g")
+		//~ .attr("class", "legend")
+		//~ .attr("transform", function(d, i) { return "translate(" + i * 50 +", 110)"; });
+
+	//~ legend.append("rect")
+		//~ .attr("x", w - 70)
+		//~ .attr("width", 18)
+		//~ .attr("height", 18)
+		//~ .style("fill", function(d, i) {return colors.slice().reverse()[i];});
+
+	//~ legend.append("text")
+		//~ .attr("x", w - 49)
+		//~ .attr("y", 9)
+		//~ .attr("dy", ".35em")
+		//~ .style("text-anchor", "start")
+		//~ .text(function(d, i) { 
+		//~ switch (i) {
+			//~ case 0: return "Rats";
+			//~ case 1: return "Squirrels";
+			//~ case 1: return "Cats";
+		//~ }
+	//~ });
+
+	//~ // Prep the tooltip bits, initial display is hidden
+	//~ var tooltip = svg.append("g")
+		//~ .attr("class", "tooltip")
+		//~ .style("display", "none");
+	    
+	//~ tooltip.append("text")
+		//~ .attr("x", 15)
+		//~ .attr("dy", "1.2em")
+		//~ .style("text-anchor", "middle")
+		//~ .attr("font-size", "12px");
+
+	//~ // Create y-axis
+	//~ svg.append("line")
+		//~ .attr("x1", 30)
+		//~ .attr("y1", 0)
+		//~ .attr("x2", 30)
+		//~ .attr("y2", 100)
+		//~ .attr("stroke-width", 2)
+		//~ .attr("stroke", "black");
+
+	//~ // y-axis label
+	//~ svg.append("text")
+		//~ .attr("class", "y label")
+		//~ .attr("text-anchor", "middle")
+		//~ .text("Reports")
+		//~ .attr("transform", "translate(20, 50) rotate(-90)")
+		//~ .attr("font-size", "14px")
+		//~ .attr("font-family", "'Open Sans', sans-serif");
+
+	//~ // Create x-axis
+	//~ svg.append("line")
+		//~ .attr("x1", 30)
+		//~ .attr("y1", 100)
+		//~ .attr("x2", 130)
+		//~ .attr("y2", 100)
+		//~ .attr("stroke-width", 2)
+		//~ .attr("stroke", "black");
+//~ }
+
+</script>
+	
+</body>
+</html>

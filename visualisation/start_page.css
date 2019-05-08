@@ -1,0 +1,109 @@
+html,
+body {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 1200px;
+}
+body {
+  background-color: #a7bdcb;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #262626;
+  line-height: 1.42857143;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+}
+h1 {
+  font-size: 44px;
+}
+h2 {
+  font-size: 24px;
+  font-weight: normal;
+}
+header {
+  padding: 10px 30px 1px 30px;
+  background-color: #115884;
+  color: #fef7eb;
+}
+header h1 {
+  color: #fff;
+}
+header > * {
+  height: 100%;
+}
+header > .row:nth-of-type(2) {
+  padding-top: 1px;
+}
+header .center {
+  margin-right: 0;
+}
+header .right {
+  width: auto;
+}
+header .app-logo {
+  width: 235px;
+}
+header .company-logo {
+  background-image: url("images/greendelta-logo.png");
+  display: block;
+  width: 210px;
+  height: 24px;
+  float: right;
+  margin-top: 50px;
+}
+header .company-logo:hover {
+  background-image: url("images/greendelta-logo-active.png");
+}
+.left {
+  float: left;
+  width: 275px;
+}
+.center {
+  margin-left: 275px;
+  margin-right: 275px;
+  padding: 0 30px;
+}
+.right {
+  float: right;
+  width: 275px;
+}
+.clear,
+.row {
+  clear: both;
+}
+#main .row {
+  padding: 10px 30px;
+}
+#main .right {
+  min-height: 125px;
+}
+#main hr {
+  border: 0;
+  border-top: 1px solid #fff;
+  margin: 0 30px;
+}
+#main .social-media-icon {
+  height: 32px;
+  margin-right: 20px;
+}
+#main .icon-container {
+  padding: 20px 0;
+  display: table;
+}
+#main .icon-container .icon {
+  height: 48px;
+  float: left;
+}
+#main .icon-container h3 {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: 20px;
+  font-size: 20px;
+  padding-left: 20px;
+}
